@@ -27,7 +27,7 @@ ZhunYuan
 ImgGen.exe ..\expansions\pre-release.cdb
 ```
 
-**配置：** `app.config`
+**配置：** `ImgGen.exe.config`
 
 XyzString
 自定义Xyz的翻译，默认为超量
