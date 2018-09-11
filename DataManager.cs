@@ -37,7 +37,10 @@ namespace ImgGen
         private static string regex_pendulum = @"】[\s\S]*?\n([\S\s]*?)\n【";
 
         private static string xyzString = "超量";
-        private static string fontName = "文泉驿微米黑";
+        private static string fontName = "方正隶变_GBK";
+        private static string numFontName = "MatrixBoldSmallCaps";
+        private static string txtFontName = "文泉驿点阵正黑";
+        private static string linkFontName = "ZhunYuan";
         private static List<int> zeroStarCards = new List<int>();
 
         public static Bitmap GetImage(int code)
@@ -142,6 +145,18 @@ namespace ImgGen
             if (_fontName != null)
                 fontName = _fontName;
 
+            string _numFontName = System.Configuration.ConfigurationManager.AppSettings["NumFontName"];
+            if (_numFontName != null)
+                numFontName = _numFontName;
+            
+            string _txtFontName = System.Configuration.ConfigurationManager.AppSettings["TxtFontName"];
+            if (_txtFontName != null)
+                txtFontName = _txtFontName;
+                
+            string _linkFontName = System.Configuration.ConfigurationManager.AppSettings["LinkFontName"];
+            if (_linkFontName != null)
+                linkFontName = _linkFontName;
+            
             string _zeroStarCards = System.Configuration.ConfigurationManager.AppSettings["ZeroStarCards"];
             if (_zeroStarCards != null)
             {
@@ -152,13 +167,13 @@ namespace ImgGen
             }
 
             conn = new SQLiteConnection("Data Source=" + dbPath);
-            numFont = new Font(fontName, 12, FontStyle.Regular, GraphicsUnit.Pixel);
-            linkFont = new Font(fontName, 12, FontStyle.Bold, GraphicsUnit.Pixel);
+            numFont = new Font(numFontName, 14, FontStyle.Regular, GraphicsUnit.Pixel);
+            linkFont = new Font(linkFontName, 12, FontStyle.Bold, GraphicsUnit.Pixel);
             nameFont = new Font(fontName, 24, GraphicsUnit.Pixel);
-            typeFont = new Font(fontName, 12, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtFont = new Font(fontName, 10, GraphicsUnit.Pixel);
-            scaleFontNormal = new Font(fontName, 24, GraphicsUnit.Pixel);
-            scaleFontSmall = new Font(fontName, 20, GraphicsUnit.Pixel);
+            typeFont = new Font(fontName, 14, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtFont = new Font(txtFontName, 12, GraphicsUnit.Pixel);
+            scaleFontNormal = new Font(numFontName, 24, GraphicsUnit.Pixel);
+            scaleFontSmall = new Font(numFontName, 20, GraphicsUnit.Pixel);
             bTemplates[0] = new Bitmap("./textures/card_spell.png");
             bTemplates[1] = new Bitmap("./textures/card_trap.png");
             bTemplates[2] = new Bitmap("./textures/card_synchro.png");

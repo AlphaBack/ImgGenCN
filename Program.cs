@@ -28,7 +28,7 @@
             }
             else
             {
-                DataManager.InitialDatas("../cards.cdb");
+                DataManager.InitialDatas("./cards.cdb");
             }
             Encoder quality = Encoder.Quality;
             ImageCodecInfo encoderInfo = GetEncoderInfo("image/jpeg");
